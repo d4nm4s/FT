@@ -1,0 +1,19 @@
+/*PODSTAWOWE USTAWIENIA*/
+body {font-family: calibri, tahoma; background: #e6e6e6;}
+
+#kontener {width: 200px; margin: 0 auto;}
+#menu {display: table; padding: 0 10px 0 !important; margin: 0 auto; overflow: hidden; font-size: 14px; background: #242424;}
+#menu li {list-style-type: none; margin: 0 auto; float: left; }
+#menu li:hover {background: #404040;}
+#menu li a {display: block; color: silver; text-decoration: none; padding: 7px 10px 7px;}
+#menu li a:hover {background: #404040; color: white;}
+#menu li li a {width: 160px;}
+#menu li ul {overflow: hidden; display: none; background: #242424;}
+#menu li:hover ul {position: absolute; padding: 0; display: block; width: 160px;}
+
+/*ANIMACJA - tylko CSS3*/
+*:hover {-moz-transition: 0.3s ease-in; -webkit-transition: 0.3s ease-in; -o-transition: 0.3s ease-in; transition: 0.3s ease-in;}
+
+/*ZAOKR¥GLONE ROGI - tylko CSS3*/
+#menu {-moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px;}
+#menu li ul {-moz-border-radius: 0 0 3px 3px; -webkit-border-radius: 0 0 3px 3px; -o-border-radius: 0 0 3px 3px; border-radius: 0 0 3px 3px;}

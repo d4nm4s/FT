@@ -1,0 +1,73 @@
+
+*{
+	padding:0;
+	margin:0;
+}
+
+body{
+	text-align:center;
+}
+
+	ul#menu { /*formatowanie menu*/
+		padding: 0; /*margines wewnêtrzny*/
+		margin: 0; /*margines zewnêtrzny*/
+		list-style-type: none;
+		float: left; /*wyrównanie - do lewej*/
+		height: auto; /*wysoko¶æ t³a*/
+		width: 200px; /*szeroko¶æ t³a*/
+		color: #000; /*kolor czcionki*/
+		background-color: #ccc; /*kolor t³a*/
+		margin-right: 0px; /*margines prawy*/
+	}
+
+	ul#menu li a { /*formatowanie przycisku*/
+		float: left; /*wyrównanie - do lewej*/
+		width: 191; /*szeroko¶æ przycisku*/
+		color: #000; /*kolor czcionki*/
+		background-color: #ccc; /*kolor t³a*/
+		padding: 2px; /*margines wewnêtrzny*/
+		text-decoration: none; /*podkre¶lenie tekstu - brak*/
+		border: 2px outset #ccc; /*ramka: szeroko¶æ, styl, kolor*/
+	}
+
+	ul#menu li a:hover { /*formatowanie przycisku po najechaniu myszk±*/
+		background-color: ccc; /*kolor t³a*/
+		color: red; /*kolor czcionki*/
+		padding: 4px 0px 0px 4px; /*margines wewnêtrzny - górny, dolny, lewy, prawy*/
+		border-style: inset; /*styl ramki*/
+
+	}
+
+	ul#submenu {
+		padding: 0;
+		margin: 0;
+		list-style-type: none;
+		float: left;
+		width: 200px;
+		color: #000;
+		background-color: #ccc;
+		margin-right: 0px;
+	}
+
+	ul#submenu li a {
+		float: left;
+		width: 191px;
+		color: #000;
+		background-color: #ccc;
+		padding: 2px;
+		text-decoration: none;
+		border: 2px outset #ccc;
+	}
+
+	ul#submenu li a:hover {
+		background-color: #cc;
+		color: red;
+	}
+
+	#poziom:hover li {
+		display: block;
+	}
+
+	#poziom li { 
+		display: none;
+	}

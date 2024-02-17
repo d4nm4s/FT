@@ -1,0 +1,117 @@
+<html>
+<head>
+<style type="text/css">
+/* <![CDATA[ */
+/*tu taj częsci nie będe wyjaśniał bo są analogiczne jak wcześniej */
+ul, ul li {
+   display: block;
+   list-style: none;
+   margin: 0;
+   padding: 0;
+}
+ul li {
+   width:100px;
+   height:20px;
+   background:#eeeeee;
+   text-align:center;
+
+}
+li:hover ul{
+   height:20px; /* odpowiedzialny za wyświetlenie naszego ukrytego menu w jednej lini*/
+}
+ul li ul{
+   margin-left:99px; 
+}
+
+ul li ul li{
+   float:left; /* wyświetlnienie ukrytego menu w jednej lini  */
+}
+
+ul li:hover span{ /*Styl odpowiedzialny za cechy po najechaniu myszką na 1 poziomowe menu */
+   float:left;
+   display:block;
+   width:100px;
+   height:20px;
+   background:#000000; 
+   color:#ffffff;
+   text-align:center;
+}
+ul li a:hover{ /*Styl odpowiedzialny za cechy po najechaniu myszką na rozwinięte menu*/
+   display:block;
+   background:#000000;
+   color:#ffffff;   
+}
+
+/*Cały trik z pokazywaniem się menu po najechaniu jest tu taj.*/
+ul, li ul {
+   position: absolute;
+   width: 1px;
+   overflow:hidden;
+   /* Nadajemy blokowi wysokość  px przez co jest praktycznie niezauważalny*/
+}
+ul, li:hover ul {
+   width:100%;
+   background:#888888;
+   /*Po najechaniu na opcje nasz blok się ukarze. Poprzez zwiększenie rozmiarów wczesniejszego bloku z 1 px na podaną przez nas*/
+}
+/* ]]> */
+</style>
+</head>
+<body>
+<ul>
+<li><span>aaa</span>
+   <ul>
+         <li><a href="?">bbbbb</a></li>
+         <li><a href="?">aaaaad</a></li>
+         <li><a href="?">asdasd</a></li>         
+         <li><a href="?">bbbbb</a></li>
+         <li><a href="?">aaaaad</a></li>
+         <li><a href="?">asdasd</a></li>
+   </ul>
+</li>
+<li><span>aaa</span>
+   <ul>
+
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>         
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>         
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>         
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>
+   </ul>
+</li><li><span>aaa</span>
+   <ul>
+
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>         
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>         
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>         
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>
+         <li><a href="?">asdfg</a></li>
+   </ul>
+</li>
+</ul>
+</body>
+</html>
