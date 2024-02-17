@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" href="css/videoPlayerMain.css" type="text/css">
+  <link rel="stylesheet" href="css/videoPlayer.theme1.css" type="text/css">
+  <link rel="stylesheet" href="css/videoPlayer.theme1_Playlist.css" type="text/css" media="screen"/>
+  <link rel="stylesheet" href="css/font-awesome.css" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+  <script src="js/froogaloop.js" type="text/javascript"></script>
+  <script src="js/IScroll4Custom.js" type="text/javascript"></script>
+  <script src='js/THREEx.FullScreen.js'></script>
+  <script src="js/videoPlayer.js" type="text/javascript"></script>
+  <script src="js/Playlist.js" type="text/javascript"></script>
+
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function($)
+    {
+        videoPlayer = $("#video").Video({           //ALL PLUGIN OPTIONS
+            autohideControls:4,                     //autohide HTML5 player controls
+            videoPlayerWidth:746,                   //total player width
+            videoPlayerHeight:420,                  //total player height
+            responsive:false,				        //this option will overwrite above videoPlayerWidth/videoPlayerHeight and set player to fit your div (parent) container: true/false
+			playlist:"Right playlist",              //choose playlist type: "Right playlist","Bottom playlist", "Off"
+			autoplay:false,                         //autoplay when webpage loads
+			allowSkip:true, 						//allow user to skip preroll ads
+            loadRandomVideoOnStart:"No",            //choose to load random video when webpage loads: "Yes", "No"
+            playVideosRandomly:"No",                //choose to shuffle videos when playing one after another: "Yes", "No"
+            vimeoColor:"F11116",                    //"hexadecimal value", default vimeo color  00adef
+            youtubeSkin:"dark",                     //youtube theme: light,dark
+            youtubeColor:"red",                     //youtube color: red, white
+			youtubeShowRelatedVideos:"Yes",         //enable/disable youtube related videos to show when youtube video finish: "Yes", "No"
+            videoPlayerShadow:"effect1",            //choose player shadow:  "effect1" , "effect2", "effect3", "effect4", "effect5", "effect6", "off"
+            posterImg:"images/preview_images/4.jpg",//player poster image 
+            posterPlayButtonType:"Default",         //"Default","Classic","Minimal","Transparent","Silver"
+            onFinish:"Play next video",             //"Play next video","Restart video", "Stop video",
+			nowPlayingText:"Yes",                   //enable disable now playing title: "Yes","No"
+            fullscreen:"Fullscreen native",         //choose fullscreen type: "Fullscreen native","Fullscreen browser"
+            rightClickMenu:true,                    //enable/disable right click over player: true/false
+            shareShow:"No",                        //enable/disable share option: "Yes","No"
+            facebookLink:"http://codecanyon.net/",  //link to go when facebook button clicked
+            twitterLink:"http://codecanyon.net/",   //link to go when twitter button clicked
+            googleplusLink:"http://codecanyon.net/",//link to go when google plus button clicked
+            logoShow:"Yes",                         //"Yes","No"
+            logoClickable:"Yes",                    //"Yes","No"
+            logoPath:"images/logo/logo.png",        //path to logo image
+            logoGoToLink:"http://codecanyon.net/",  //redirect to page when logo clicked
+            logoPosition:"bottom-right",            //choose logo position: "bottom-right","bottom-left"
+            embedShow:"Yes",                        //enable/disable embed option: "Yes","No"
+            embedCodeSrc:"www.yourwebsite.com/player/index.html", //path to your video player on server
+            embedCodeW:"746",                       //embed player code width
+            embedCodeH:"420",                       //embed player code height
+            videos:[
+                {
+                    videoType:"HTML5",                                              //choose video type: "HTML5", "youtube", "vimeo"
+                    title:"HTML5 video",                                            //video title
+                    youtubeID:"",                                          //https://www.youtube.com/watch?v=LfTLc5JGFPc
+                    vimeoID:"",                                               //http://vimeo.com/46515976
+                    mp4:"",//HTML5 video mp4 url
+                    videoAdShow:"yes",                                                 //show pre-roll "yes","no"
+                    videoAdGotoLink:"http://codecanyon.net/",                         //pre-roll goto link
+                    mp4AD:"",  //pre-roll video mp4 format
+                    description:"Video description goes here.",                       //video description
+                    thumbImg:"images/thumbnail_images/pic3.jpg",                      //path to playlist thumbnail image
+                    info:"Video info goes here",                                      //video info
+                    popupImg:"images/popup_ad_images/ad1.jpg",                        //popup image URL
+                    popupAdShow:"no",                                                //enable/disable popup image: "yes","no"
+                    popupAdStartTime:"00:03",                                         //time to show popup ad during playback
+                    popupAdEndTime:"00:10",                                           //time to hide popup ad during playback
+                    popupAdGoToLink:"http://codecanyon.net/",                         //re-direct to URL when popup ad clicked
+					textAdShow:"no",                                                 //enable/disable text ad: "yes","no"
+					textAd:"This is text advertising. <br>You can set any text here.",//content of text ad
+                    textAdStartTime:"00:03",                                          //time to show text ad during playback
+                    textAdEndTime:"00:15",                                            //time to hide text ad during playback
+                    textAdGoToLink:""                           //re-direct to URL when text ad clicked
+                },
+                
+                {
+                    videoType:"HTML5",
+                    title:"Big Buck Bunny trailer",
+                    youtubeID:"",
+                    vimeoID:"46515976",
+                    mp4:"http://redirector.redefine.pl/movies/df9aa9142ebe0b0fa4553a145e81fd0f.mp4",
+                    videoAdShow:"no",
+                    videoAdGotoLink:"",
+                    mp4AD:"",
+                    description:"Video description goes here.",
+                    thumbImg:"images/thumbnail_images/pic3.jpg",
+                    info:"Video info goes here",
+                    popupImg:"images/popup_ad_images/ad3.jpg",
+                    popupAdShow:"no",
+                    popupAdStartTime:"00:03",
+                    popupAdEndTime:"00:10",
+                    popupAdGoToLink:"",
+					textAdShow:"no",
+					textAd:"This is text advertising. <br>You can set any text here.",                                                
+                    textAdStartTime:"00:03",                                          
+                    textAdEndTime:"00:15",                                           
+                    textAdGoToLink:"" 
+                },
+                {
+                    videoType:"HTML5",
+                    title:"Big Buck Bunny trailer",
+                    youtubeID:"LfTLc5JGFPc",
+                    vimeoID:"46515976",
+                    mp4:"http://player.pageflip.com.hr/videos/Big_Buck_Bunny_Trailer.mp4",
+                    videoAdShow:"yes",
+                    videoAdGotoLink:"http://codecanyon.net/",
+                    mp4AD:"http://player.pageflip.com.hr/videos/Sintel_Trailer.mp4",
+                    description:"Video description goes here.",
+                    thumbImg:"images/thumbnail_images/pic3.jpg",
+                    info:"Video info goes here",
+                    popupImg:"images/popup_ad_images/ad4.jpg",
+                    popupAdShow:"yes",
+                    popupAdStartTime:"00:03",
+                    popupAdEndTime:"00:10",
+                    popupAdGoToLink:"http://codecanyon.net/",
+					textAdShow:"yes",
+					textAd:"This is text advertising. <br>You can set any text here.",
+                    textAdStartTime:"00:03",                                          
+                    textAdEndTime:"00:15",                                           
+                    textAdGoToLink:"http://codecanyon.net/" 
+                },
+                {
+                    videoType:"HTML5",
+                    title:"Big Buck Bunny trailer",
+                    youtubeID:"LfTLc5JGFPc",
+                    vimeoID:"46515976",
+                    mp4:"http://player.pageflip.com.hr/videos/Big_Buck_Bunny_Trailer.mp4",
+                    videoAdShow:"yes",
+                    videoAdGotoLink:"http://codecanyon.net/",
+                    mp4AD:"http://player.pageflip.com.hr/videos/Sintel_Trailer.mp4",
+                    description:"Video description goes here.",
+                    thumbImg:"images/thumbnail_images/pic3.jpg",
+                    info:"Video info goes here",
+                    popupImg:"images/popup_ad_images/ad5.jpg",
+                    popupAdShow:"yes",
+                    popupAdStartTime:"00:03",
+                    popupAdEndTime:"00:10",
+                    popupAdGoToLink:"http://codecanyon.net/",
+					textAdShow:"yes",
+					textAd:"This is text advertising. <br>You can set any text here.",                                                
+                    textAdStartTime:"00:03",                                          
+                    textAdEndTime:"00:15",                                           
+                    textAdGoToLink:"http://codecanyon.net/" 
+                },
+                {
+                    videoType:"HTML5",
+                    title:"Big Buck Bunny trailer",
+                    youtubeID:"LfTLc5JGFPc",
+                    vimeoID:"46515976",
+                    mp4:"http://player.pageflip.com.hr/videos/Big_Buck_Bunny_Trailer.mp4",
+                    videoAdShow:"yes",
+                    videoAdGotoLink:"http://codecanyon.net/",
+                    mp4AD:"http://player.pageflip.com.hr/videos/Sintel_Trailer.mp4",
+                    description:"Video description goes here.",
+                    thumbImg:"images/thumbnail_images/pic3.jpg",
+                    info:"Video info goes here",
+                    popupImg:"images/popup_ad_images/ad1.jpg",
+                    popupAdShow:"yes",
+                    popupAdStartTime:"00:03",
+                    popupAdEndTime:"00:10",
+                    popupAdGoToLink:"http://codecanyon.net/",
+					textAdShow:"yes", 
+					textAd:"This is text advertising. <br>You can set any text here.",
+                    textAdStartTime:"00:03",                                          
+                    textAdEndTime:"00:15",                                           
+                    textAdGoToLink:"http://codecanyon.net/" 
+                },
+                {
+                    videoType:"HTML5",
+                    title:"Big Buck Bunny trailer",
+                    youtubeID:"LfTLc5JGFPc",
+                    vimeoID:"46515976",
+                    mp4:"http://player.pageflip.com.hr/videos/Big_Buck_Bunny_Trailer.mp4",
+                    videoAdShow:"yes",
+                    videoAdGotoLink:"http://codecanyon.net/",
+                    mp4AD:"http://player.pageflip.com.hr/videos/Sintel_Trailer.mp4",
+                    description:"Video description goes here.",
+                    thumbImg:"images/thumbnail_images/pic3.jpg",
+                    info:"Video info goes here",
+                    popupImg:"images/popup_ad_images/ad2.jpg",
+                    popupAdShow:"yes",
+                    popupAdStartTime:"00:03",
+                    popupAdEndTime:"00:10",
+                    popupAdGoToLink:"http://codecanyon.net/",
+					textAdShow:"yes",
+					textAd:"This is text advertising. <br>You can set any text here.",
+                    textAdStartTime:"00:03",                                          
+                    textAdEndTime:"00:15",                                           
+                    textAdGoToLink:"http://codecanyon.net/" 
+                },
+                {
+                    videoType:"HTML5",
+                    title:"Big Buck Bunny trailer",
+                    youtubeID:"LfTLc5JGFPc",
+                    vimeoID:"46515976",
+                    mp4:"http://player.pageflip.com.hr/videos/Big_Buck_Bunny_Trailer.mp4",
+                    videoAdShow:"yes",
+                    videoAdGotoLink:"http://codecanyon.net/",
+                    mp4AD:"http://player.pageflip.com.hr/videos/Sintel_Trailer.mp4",
+                    description:"Video description goes here.",
+                    thumbImg:"images/thumbnail_images/pic3.jpg",
+                    info:"Video info goes here",
+                    popupImg:"images/popup_ad_images/ad3.jpg",
+                    popupAdShow:"yes",
+                    popupAdStartTime:"00:03",
+                    popupAdEndTime:"00:10",
+                    popupAdGoToLink:"http://codecanyon.net/",
+					textAdShow:"yes",  
+					textAd:"This is text advertising. <br>You can set any text here.",                                              
+                    textAdStartTime:"00:03",                                          
+                    textAdEndTime:"00:15",                                           
+                    textAdGoToLink:"http://codecanyon.net/" 
+                },
+                {
+                    videoType:"HTML5",
+                    title:"Big Buck Bunny trailer",
+                    youtubeID:"LfTLc5JGFPc",
+                    vimeoID:"46515976",
+                    mp4:"http://player.pageflip.com.hr/videos/Big_Buck_Bunny_Trailer.mp4",
+                    videoAdShow:"yes",
+                    videoAdGotoLink:"http://codecanyon.net/",
+                    mp4AD:"http://player.pageflip.com.hr/videos/Sintel_Trailer.mp4",
+                    description:"Video description goes here.",
+                    thumbImg:"images/thumbnail_images/pic3.jpg",
+                    info:"Video info goes here",
+                    popupImg:"images/popup_ad_images/ad4.jpg",
+                    popupAdShow:"yes",
+                    popupAdStartTime:"00:03",
+                    popupAdEndTime:"00:10",
+                    popupAdGoToLink:"http://codecanyon.net/",
+					textAdShow:"yes", 
+					textAd:"This is text advertising. <br>You can set any text here.",                                               
+                    textAdStartTime:"00:03",                                          
+                    textAdEndTime:"00:15",                                           
+                    textAdGoToLink:"http://codecanyon.net/" 
+                },
+                {
+                    videoType:"HTML5",
+                    title:"Big Buck Bunny trailer",
+                    youtubeID:"LfTLc5JGFPc",
+                    vimeoID:"46515976",
+                    mp4:"http://player.pageflip.com.hr/videos/Big_Buck_Bunny_Trailer.mp4",
+                    videoAdShow:"yes",
+                    videoAdGotoLink:"http://codecanyon.net/",
+                    mp4AD:"http://player.pageflip.com.hr/videos/Sintel_Trailer.mp4",
+                    description:"Video description goes here.",
+                    thumbImg:"images/thumbnail_images/pic3.jpg",
+                    info:"Video info goes here",
+                    popupImg:"images/popup_ad_images/ad4.jpg",
+                    popupAdShow:"yes",
+                    popupAdStartTime:"00:03",
+                    popupAdEndTime:"00:10",
+                    popupAdGoToLink:"http://codecanyon.net/",
+					textAdShow:"yes",   
+					textAd:"This is text advertising. <br>You can set any text here.",                                             
+                    textAdStartTime:"00:03",                                          
+                    textAdEndTime:"00:15",                                           
+                    textAdGoToLink:"http://codecanyon.net/" 
+                },
+                {
+                    videoType:"HTML5",
+                    title:"Big Buck Bunny trailer",
+                    youtubeID:"LfTLc5JGFPc",
+                    vimeoID:"46515976",
+                    mp4:"http://player.pageflip.com.hr/videos/Big_Buck_Bunny_Trailer.mp4",
+                    videoAdShow:"yes",
+                    videoAdGotoLink:"http://codecanyon.net/",
+                    mp4AD:"http://player.pageflip.com.hr/videos/Sintel_Trailer.mp4",
+                    description:"Video description goes here.",
+                    thumbImg:"images/thumbnail_images/pic3.jpg",
+                    info:"Video info goes here",
+                    popupImg:"images/popup_ad_images/ad4.jpg",
+                    popupAdShow:"yes",
+                    popupAdStartTime:"00:03",
+                    popupAdEndTime:"00:10",
+                    popupAdGoToLink:"http://codecanyon.net/",
+					textAdShow:"yes", 
+					textAd:"This is text advertising. <br>You can set any text here.",                                               
+                    textAdStartTime:"00:03",                                          
+                    textAdEndTime:"00:15",                                           
+                    textAdGoToLink:"http://codecanyon.net/" 
+                },
+                {
+                    videoType:"HTML5",
+                    title:"Big Buck Bunny trailer",
+                    youtubeID:"LfTLc5JGFPc",
+                    vimeoID:"46515976",
+                    mp4:"http://player.pageflip.com.hr/videos/Big_Buck_Bunny_Trailer.mp4",
+                    videoAdShow:"yes",
+                    videoAdGotoLink:"http://codecanyon.net/",
+                    mp4AD:"http://player.pageflip.com.hr/videos/Sintel_Trailer.mp4",
+                    description:"Video description goes here.",
+                    thumbImg:"images/thumbnail_images/pic3.jpg",
+                    info:"Video info goes here",
+                    popupImg:"images/popup_ad_images/ad4.jpg",
+                    popupAdShow:"yes",
+                    popupAdStartTime:"00:03",
+                    popupAdEndTime:"00:10",
+                    popupAdGoToLink:"http://codecanyon.net/",
+					textAdShow:"yes",  
+					textAd:"This is text advertising. <br>You can set any text here.",                                              
+                    textAdStartTime:"00:03",                                          
+                    textAdEndTime:"00:15",                                           
+                    textAdGoToLink:"http://codecanyon.net/" 
+                },
+                {
+                    videoType:"HTML5",
+                    title:"Big Buck Bunny trailer",
+                    youtubeID:"LfTLc5JGFPc",
+                    vimeoID:"46515976",
+                    mp4:"http://player.pageflip.com.hr/videos/Big_Buck_Bunny_Trailer.mp4",
+                    videoAdShow:"yes",
+                    videoAdGotoLink:"http://codecanyon.net/",
+                    mp4AD:"http://player.pageflip.com.hr/videos/Sintel_Trailer.mp4",
+                    description:"Video description goes here.",
+                    thumbImg:"images/thumbnail_images/pic3.jpg",
+                    info:"Video info goes here",
+                    popupImg:"images/popup_ad_images/ad4.jpg",
+                    popupAdShow:"yes",
+                    popupAdStartTime:"00:03",
+                    popupAdEndTime:"00:10",
+                    popupAdGoToLink:"http://codecanyon.net/",
+					textAdShow:"yes", 
+					textAd:"This is text advertising. <br>You can set any text here.",                                               
+                    textAdStartTime:"00:03",                                          
+                    textAdEndTime:"00:15",                                           
+                    textAdGoToLink:"http://codecanyon.net/" 
+                },
+                {
+                    videoType:"HTML5",
+                    title:"Big Buck Bunny trailer",
+                    youtubeID:"LfTLc5JGFPc",
+                    vimeoID:"46515976",
+                    mp4:"http://player.pageflip.com.hr/videos/Big_Buck_Bunny_Trailer.mp4",
+                    videoAdShow:"yes",
+                    videoAdGotoLink:"http://codecanyon.net/",
+                    mp4AD:"http://player.pageflip.com.hr/videos/Sintel_Trailer.mp4",
+                    description:"Video description goes here.",
+                    thumbImg:"images/thumbnail_images/pic3.jpg",
+                    info:"Video info goes here",
+                    popupImg:"images/popup_ad_images/ad4.jpg",
+                    popupAdShow:"yes",
+                    popupAdStartTime:"00:03",
+                    popupAdEndTime:"00:10",
+                    popupAdGoToLink:"http://codecanyon.net/",
+					textAdShow:"yes",  
+					textAd:"This is text advertising. <br>You can set any text here.",                                              
+                    textAdStartTime:"00:03",                                          
+                    textAdEndTime:"00:15",                                           
+                    textAdGoToLink:"http://codecanyon.net/" 
+                },
+                {
+                    videoType:"HTML5",
+                    title:"Big Buck Bunny trailer",
+                    youtubeID:"LfTLc5JGFPc",
+                    vimeoID:"46515976",
+                    mp4:"http://player.pageflip.com.hr/videos/Big_Buck_Bunny_Trailer.mp4",
+                    videoAdShow:"yes",
+                    videoAdGotoLink:"http://codecanyon.net/",
+                    mp4AD:"http://player.pageflip.com.hr/videos/Sintel_Trailer.mp4",
+                    description:"Video description goes here.",
+                    thumbImg:"images/thumbnail_images/pic3.jpg",
+                    info:"Video info goes here",
+                    popupImg:"images/popup_ad_images/ad4.jpg",
+                    popupAdShow:"yes",
+                    popupAdStartTime:"00:03",
+                    popupAdEndTime:"00:10",
+                    popupAdGoToLink:"http://codecanyon.net/",
+					textAdShow:"yes",   
+					textAd:"This is text advertising. <br>You can set any text here.",                                             
+                    textAdStartTime:"00:03",                                          
+                    textAdEndTime:"00:15",                                           
+                    textAdGoToLink:"http://codecanyon.net/" 
+                },
+                {
+                    videoType:"HTML5",
+                    title:"Big Buck Bunny trailer",
+                    youtubeID:"LfTLc5JGFPc",
+                    vimeoID:"46515976",
+                    mp4:"http://player.pageflip.com.hr/videos/Big_Buck_Bunny_Trailer.mp4",
+                    videoAdShow:"yes",
+                    videoAdGotoLink:"http://codecanyon.net/",
+                    mp4AD:"http://player.pageflip.com.hr/videos/Sintel_Trailer.mp4",
+                    description:"Video description goes here.",
+                    thumbImg:"images/thumbnail_images/pic3.jpg",
+                    info:"Video info goes here",
+                    popupImg:"images/popup_ad_images/ad4.jpg",
+                    popupAdShow:"yes",
+                    popupAdStartTime:"00:03",
+                    popupAdEndTime:"00:10",
+                    popupAdGoToLink:"http://codecanyon.net/",
+					textAdShow:"yes",  
+					textAd:"This is text advertising. <br>You can set any text here.",                                              
+                    textAdStartTime:"00:03",                                          
+                    textAdEndTime:"00:15",                                           
+                    textAdGoToLink:"http://codecanyon.net/" 
+                },
+                {
+                    videoType:"HTML5",
+                    title:"Big Buck Bunny trailer",
+                    youtubeID:"LfTLc5JGFPc",
+                    vimeoID:"46515976",
+                    mp4:"http://player.pageflip.com.hr/videos/Big_Buck_Bunny_Trailer.mp4",
+                    videoAdShow:"yes",
+                    videoAdGotoLink:"http://codecanyon.net/",
+                    mp4AD:"http://player.pageflip.com.hr/videos/Sintel_Trailer.mp4",
+                    description:"Video description goes here.",
+                    thumbImg:"images/thumbnail_images/pic3.jpg",
+                    info:"Video info goes here",
+                    popupImg:"images/popup_ad_images/ad4.jpg",
+                    popupAdShow:"yes",
+                    popupAdStartTime:"00:03",
+                    popupAdEndTime:"00:10",
+                    popupAdGoToLink:"http://codecanyon.net/",
+					textAdShow:"yes",  
+					textAd:"This is text advertising. <br>You can set any text here.",                                              
+                    textAdStartTime:"00:03",                                          
+                    textAdEndTime:"00:15",                                           
+                    textAdGoToLink:"http://codecanyon.net/" 
+                }
+
+            ]
+        });
+    });
+
+  </script>
+</head>
+
+<body>
+<!--example: responsive (fit to parent container)-->
+<!--<div style="position:fixed;width:80%;height:80%;top:0;left:0;background:#cccccc">-->
+  <!--<div id="video"></div>-->
+<!--</div>-->
+
+<!--example: fixed width, fixed height-->
+<div id="video"></div>
+</body>
+
+</html>

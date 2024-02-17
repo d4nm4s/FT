@@ -1,0 +1,57 @@
+		videoPlayer = $("#Elite_video_player").Video({   //ALL PLUGIN OPTIONS
+				instanceName:"player1",                      //name of the player instance
+				autohideControls:5,                          //autohide HTML5 player controls
+				hideControlsOnMouseOut:"Yes",                 //hide HTML5 player controls on mouse out of the player: "Yes","No"
+				videoPlayerWidth:1080,                       //fixed total player width
+				videoPlayerHeight:720,                       //fixed total player height
+				responsive:true,				             //this option will overwrite above videoPlayerWidth/videoPlayerHeight and set player to fit your div (parent) container: true/false
+				playlist:"Right playlist",                   //choose playlist type: "Right playlist", "Off"
+				playlistScrollType:"light",                  //choose scrollbar type: "light","minimal","light-2","light-3","light-thick","light-thin","inset","inset-2","inset-3","rounded","rounded-dots","3d"
+				playlistBehaviourOnPageload:"opened",		 //choose playlist behaviour when webpage loads: "closed", "opened" (not apply to Vimeo player)
+				autoplay:false,                              //autoplay when webpage loads: true/false
+				colorAccent:"#cc181e",                       //plugin colors accent (hexadecimal or RGB value - http://www.colorpicker.com/)
+				vimeoColor:"00adef",                         //set "hexadecimal value", default vimeo color is "00adef"
+				youtubeControls:"custom controls",			 //choose youtube player controls: "custom controls", "default controls"
+				youtubeSkin:"dark",                          //default youtube controls theme: light, dark
+				youtubeColor:"red",                          //default youtube controls bar color: red, white
+				youtubeQuality:"default",                    //choose youtube quality: "small", "medium", "large", "hd720", "hd1080", "highres", "default"
+				youtubeShowRelatedVideos:"Yes",				 //choose to show youtube related videos when video finish: "Yes", "No" (onFinish:"Stop video" needs to be enabled)
+				videoPlayerShadow:"effect1",                 //choose player shadow:  "effect1" , "effect2", "effect3", "effect4", "effect5", "effect6", "off"
+				loadRandomVideoOnStart:"No",                 //choose to load random video when webpage loads: "Yes", "No"
+				shuffle:"No",				                 //choose to shuffle videos when playing one after another: "Yes", "No" (shuffle button enabled/disabled on start)
+				posterImg:"",//player poster image  
+				onFinish:"Play next video",                  //"Play next video","Restart video", "Stop video",
+				nowPlayingText:"Yes",                        //enable disable now playing title: "Yes","No"
+				fullscreen:"Fullscreen native",              //choose fullscreen type: "Fullscreen native","Fullscreen browser"
+				rightClickMenu:true,                         //enable/disable right click over HTML5 player: true/false
+				hideVideoSource:false,						 //option to hide self hosted video sources (to prevent users from download/steal your videos): true/false
+				showAllControls:true,						 //enable/disable all HTML5 player controls: true/false
+				allowSkipAd:false,                            //enable/disable "Skip advertisement" option: true/false
+				infoShow:"No",                              //enable/disable info option: "Yes","No"
+				shareShow:"No",                             //enable/disable all share options: "Yes","No"
+				facebookShow:"No",                          //enable/disable facebook option individually: "Yes","No"
+				twitterShow:"No",                           //enable/disable twitter option individually: "Yes","No"
+				mailShow:"No",                              //enable/disable mail option individually: "Yes","No"
+				facebookShareName:"Elite video player",      //first parametar of facebook share in facebook feed dialog is title
+				facebookShareLink:"http://codecanyon.net/item/elite-video-player-wordpress-plugin/10496434",  //second parametar of facebook share in facebook feed dialog is link below title
+				facebookShareDescription:"Elite Video Player is stunning, modern, responsive, fully customisable high-end video player for WordPress that support advertising and the most popular video platforms like YouTube, Vimeo or self-hosting videos (mp4).", //third parametar of facebook share in facebook feed dialog is description below link
+				facebookSharePicture:"https://0.s3.envato.com/files/123866118/preview.jpg", //fourth parametar in facebook feed dialog is picture on left side
+				twitterText:"Elite video player",			 //first parametar of twitter share in twitter feed dialog is text
+				twitterLink:"http://codecanyon.net/item/elite-video-player-wordpress-plugin/10496434", //second parametar of twitter share in twitter feed dialog is link
+				twitterHashtags:"wordpressvideoplayer",		 //third parametar of twitter share in twitter feed dialog is hashtag
+				twitterVia:"Creative media",				 //fourth parametar of twitter share in twitter feed dialog is via (@)
+				googlePlus:"http://codecanyon.net/item/elite-video-player-wordpress-plugin/10496434", //share link over Google +
+				logoShow:"No",                              //"Yes","No"
+				logoClickable:"No",                         //"Yes","No"
+				logoPath:"images/logo/logo.png",             //path to logo image
+				logoGoToLink:"http://codecanyon.net/",       //redirect to page when logo clicked
+				logoPosition:"bottom-left",                  //choose logo position: "bottom-right","bottom-left"
+				embedShow:"No",                             //enable/disable embed option: "Yes","No"
+				embedCodeSrc:"www.yourwebsite.com/videoplayer/index.html", //path to your video player on server
+				embedCodeW:"746",                            //embed player code width
+				embedCodeH:"420",                            //embed player code height
+				embedShareLink:"www.yourwebsite.com/videoplayer/index.html", //direct link to your site (or any other URL) you want to be "shared"
+				youtubePlaylistID:"",                        //automatic youtube playlist ID (leave blank "" if you want to use manual playlist) LL4qbSRobYCjvwo4FCQFrJ4g
+				youtubeChannelID:"",                         //automatic youtube channel ID (leave blank "" if you want to use manual playlist) UCHqaLr9a9M7g9QN6xem9HcQ
+				
+				//manual playlist

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="description" content="Elite Video Player"/>
+	<meta property="og:title" content="Elite Video Player by _zac_"/>
+	<meta property="og:image" content="http://creativeinteractivemedia.com/player/imgFB/elite.png"/>
+	<link rel="stylesheet" href="../css/elite.css" type="text/css" media="screen"/>
+	<link rel="stylesheet" href="../css/elite-font-awesome.css" type="text/css">
+	<link rel="stylesheet" href="../css/jquery.mCustomScrollbar.css" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="../js/froogaloop.js" type="text/javascript"></script>
+	<script src="../js/jquery.mCustomScrollbar.js" type="text/javascript"></script> 
+	<script src="../js/THREEx.FullScreen.js"></script>
+	<script src="../js/videoPlayer.js" type="text/javascript"></script>
+	<script src="../js/Playlist.js" type="text/javascript"></script>
+	<script type="text/javascript" src="../js/ZeroClipboard.js"></script>
+
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function($)
+		{
+			videoPlayer = $("#Elite_video_player").Video({   //ALL PLUGIN OPTIONS
+				instanceName:"player1",                      //name of the player instance
+				autohideControls:5,                          //autohide HTML5 player controls
+				hideControlsOnMouseOut:"Yes",                 //hide HTML5 player controls on mouse out of the player: "Yes","No"
+				videoPlayerWidth:1080,                       //fixed total player width
+				videoPlayerHeight:720,                       //fixed total player height
+				responsive:true,				             //this option will overwrite above videoPlayerWidth/videoPlayerHeight and set player to fit your div (parent) container: true/false
+				playlist:"Right playlist",                   //choose playlist type: "Right playlist", "Off"
+				playlistScrollType:"light",                  //choose scrollbar type: "light","minimal","light-2","light-3","light-thick","light-thin","inset","inset-2","inset-3","rounded","rounded-dots","3d"
+				playlistBehaviourOnPageload:"opened",		 //choose playlist behaviour when webpage loads: "closed", "opened" (not apply to Vimeo player)
+				autoplay:false,                              //autoplay when webpage loads: true/false
+				colorAccent:"#cc181e",                       //plugin colors accent (hexadecimal or RGB value - http://www.colorpicker.com/)
+				vimeoColor:"00adef",                         //set "hexadecimal value", default vimeo color is "00adef"
+				youtubeControls:"custom controls",			 //choose youtube player controls: "custom controls", "default controls"
+				youtubeSkin:"dark",                          //default youtube controls theme: light, dark
+				youtubeColor:"red",                          //default youtube controls bar color: red, white
+				youtubeQuality:"default",                    //choose youtube quality: "small", "medium", "large", "hd720", "hd1080", "highres", "default"
+				youtubeShowRelatedVideos:"Yes",				 //choose to show youtube related videos when video finish: "Yes", "No" (onFinish:"Stop video" needs to be enabled)
+				videoPlayerShadow:"effect1",                 //choose player shadow:  "effect1" , "effect2", "effect3", "effect4", "effect5", "effect6", "off"
+				loadRandomVideoOnStart:"No",                 //choose to load random video when webpage loads: "Yes", "No"
+				shuffle:"No",				                 //choose to shuffle videos when playing one after another: "Yes", "No" (shuffle button enabled/disabled on start)
+				posterImg:"",//player poster image  
+				onFinish:"Play next video",                  //"Play next video","Restart video", "Stop video",
+				nowPlayingText:"Yes",                        //enable disable now playing title: "Yes","No"
+				fullscreen:"Fullscreen native",              //choose fullscreen type: "Fullscreen native","Fullscreen browser"
+				rightClickMenu:true,                         //enable/disable right click over HTML5 player: true/false
+				hideVideoSource:false,						 //option to hide self hosted video sources (to prevent users from download/steal your videos): true/false
+				showAllControls:true,						 //enable/disable all HTML5 player controls: true/false
+				allowSkipAd:false,                            //enable/disable "Skip advertisement" option: true/false
+				infoShow:"No",                              //enable/disable info option: "Yes","No"
+				shareShow:"No",                             //enable/disable all share options: "Yes","No"
+				facebookShow:"No",                          //enable/disable facebook option individually: "Yes","No"
+				twitterShow:"No",                           //enable/disable twitter option individually: "Yes","No"
+				mailShow:"No",                              //enable/disable mail option individually: "Yes","No"
+				facebookShareName:"Elite video player",      //first parametar of facebook share in facebook feed dialog is title
+				facebookShareLink:"http://codecanyon.net/item/elite-video-player-wordpress-plugin/10496434",  //second parametar of facebook share in facebook feed dialog is link below title
+				facebookShareDescription:"Elite Video Player is stunning, modern, responsive, fully customisable high-end video player for WordPress that support advertising and the most popular video platforms like YouTube, Vimeo or self-hosting videos (mp4).", //third parametar of facebook share in facebook feed dialog is description below link
+				facebookSharePicture:"https://0.s3.envato.com/files/123866118/preview.jpg", //fourth parametar in facebook feed dialog is picture on left side
+				twitterText:"Elite video player",			 //first parametar of twitter share in twitter feed dialog is text
+				twitterLink:"http://codecanyon.net/item/elite-video-player-wordpress-plugin/10496434", //second parametar of twitter share in twitter feed dialog is link
+				twitterHashtags:"wordpressvideoplayer",		 //third parametar of twitter share in twitter feed dialog is hashtag
+				twitterVia:"Creative media",				 //fourth parametar of twitter share in twitter feed dialog is via (@)
+				googlePlus:"http://codecanyon.net/item/elite-video-player-wordpress-plugin/10496434", //share link over Google +
+				logoShow:"No",                              //"Yes","No"
+				logoClickable:"No",                         //"Yes","No"
+				logoPath:"images/logo/logo.png",             //path to logo image
+				logoGoToLink:"http://codecanyon.net/",       //redirect to page when logo clicked
+				logoPosition:"bottom-left",                  //choose logo position: "bottom-right","bottom-left"
+				embedShow:"No",                             //enable/disable embed option: "Yes","No"
+				embedCodeSrc:"www.yourwebsite.com/videoplayer/index.html", //path to your video player on server
+				embedCodeW:"746",                            //embed player code width
+				embedCodeH:"420",                            //embed player code height
+				embedShareLink:"www.yourwebsite.com/videoplayer/index.html", //direct link to your site (or any other URL) you want to be "shared"
+				youtubePlaylistID:"",                        //automatic youtube playlist ID (leave blank "" if you want to use manual playlist) LL4qbSRobYCjvwo4FCQFrJ4g
+				youtubeChannelID:"",                         //automatic youtube channel ID (leave blank "" if you want to use manual playlist) UCHqaLr9a9M7g9QN6xem9HcQ
+				
+				//manual playlist
+				videos:[
+					
+					
+					{
+						videoType:"HTML5",
+						title:"Odcinek 101",
+						mp4:"http://redirector.redefine.pl/movies/d84598a35bc7dd3344aa06a0dc903701.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg"
+						
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 102",
+						mp4:"http://redirector.redefine.pl/movies/ab072b41deff5e8083a6889c8e31b1cc.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 103",
+						mp4:"http://redirector.redefine.pl/movies/f76481c8971ee30a2b6d212a247c175d.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 104",
+						mp4:"http://redirector.redefine.pl/movies/c629c410a11fbbecc809b4eabf9400ff.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 105",
+						mp4:"http://redirector.redefine.pl/movies/4d1c82784eb26674cbd0413cf2c55b94.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 106",
+						mp4:"http://redirector.redefine.pl/movies/3d5430e5435e6a48e53311d995596825.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 107",
+						mp4:"http://redirector.redefine.pl/movies/5f2cc6982c1ad79090e036fa3a41aee1.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 108",
+						mp4:"http://redirector.redefine.pl/movies/f95ff1d0507e989eed1700f7c90198fb.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 109",
+						mp4:"http://redirector.redefine.pl/movies/793f8aa189a2657b9797a70ab3dcab34.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 110",
+						mp4:"http://redirector.redefine.pl/movies/3a33236a8fb39c3f8a4c190ccae34f43.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 111",
+						mp4:"http://redirector.redefine.pl/movies/7afa83b110eddf22f6f9bd5f95356db0.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 112",
+						mp4:"http://redirector.redefine.pl/movies/2b98bdde006da4ce56fd9060416a12c7.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 113",
+						mp4:"http://redirector.redefine.pl/movies/cc6cbabbe04a17752f979b4b4a7cdbac.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 114",
+						mp4:"http://redirector.redefine.pl/movies/f8d383858f9828d7d49560445a474775.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 115",
+						mp4:"http://redirector.redefine.pl/movies/5e81bf3725e964e60e288c268e298d6a.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 116",
+						mp4:"http://redirector.redefine.pl/movies/12e9563c8273e3c063acf70dd55fe065.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 117",
+						mp4:"http://redirector.redefine.pl/movies/19a9b4421cd3c1a71e5772005a853e9c.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 118",
+						mp4:"http://redirector.redefine.pl/movies/34bb1ffd0446dfb0b35cb92254fafdde.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 119",
+						mp4:"http://redirector.redefine.pl/movies/75d55391687f1edc92185144c0918ff8.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 120",
+						mp4:"http://redirector.redefine.pl/movies/40ee3f772ed1dc586e60bf085f4d2d02.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 121",
+						mp4:"http://redirector.redefine.pl/movies/fb10964beb3f2609a06acdb02c15c5ec.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 122",
+						mp4:"http://redirector.redefine.pl/movies/196a59aafc8c33f00b8d61f66fc9d2d7.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 123",
+						mp4:"http://redirector.redefine.pl/movies/0df8b62397833d2441d644a00f79fd71.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 124",
+						mp4:"http://redirector.redefine.pl/movies/013442d13e1fea8f3f8b0c6175e5fc0a.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 125",
+						mp4:"http://redirector.redefine.pl/movies/dd7a91ff47b05f1018898629dd539b80.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 126",
+						mp4:"http://redirector.redefine.pl/movies/43cd2efc0207abd4c28fc925e87f10c1.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 127",
+						mp4:"http://redirector.redefine.pl/movies/9d23f1d198101b778db6fb26e7489ed7.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 128",
+						mp4:"http://redirector.redefine.pl/movies/79d85deb8dceed10fac1e9ca9a15e4c6.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 129",
+						mp4:"http://redirector.redefine.pl/movies/568ea5d0434ecdbdc81ff19168a87d7e.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 130",
+						mp4:"http://redirector.redefine.pl/movies/dccfb5eec4c7d013446ada1769c9bc5f.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 131",
+						mp4:"http://redirector.redefine.pl/movies/908d6b433aece9e5a7e3e622c414df76.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 132",
+						mp4:"http://redirector.redefine.pl/movies/754fc4f4f3d53a57fb422d611f257249.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 133",
+						mp4:"http://redirector.redefine.pl/movies/e10009a50ed8e0964012702014fb5f28.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 134",
+						mp4:"http://redirector.redefine.pl/movies/e56f65eaabde2bcce3376c19c0f7fdab.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 135",
+						mp4:"http://redirector.redefine.pl/movies/2ff221a741b84c6fdb64e075bdce6515.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 136",
+						mp4:"http://redirector.redefine.pl/movies/9cb447adf4fde546fbcde7b04c1940e5.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 137",
+						mp4:"http://redirector.redefine.pl/movies/593a805118e553135daf3e5d40e304c7.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 138",
+						mp4:"http://redirector.redefine.pl/movies/25b91d9deb782adb3d2bdf9b2bc4c036.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 139",
+						mp4:"http://redirector.redefine.pl/movies/92ccec897b366426aa119fc7d4a9b424.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 140",
+						mp4:"http://redirector.redefine.pl/movies/514f4c8dcec2935f94e9cd69ed453183.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 141",
+						mp4:"http://redirector.redefine.pl/movies/b73f27ddaa539e9a3e6b1283490700af.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 142",
+						mp4:"http://redirector.redefine.pl/movies/ea85d1a6f29d0e3d169ebf0dd81a490b.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 143",
+						mp4:"http://redirector.redefine.pl/movies/edbc06e432791d30b77c4e1cb6e98c25.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 144",
+						mp4:"http://redirector.redefine.pl/movies/c9a4985dc1b3ad5134126501879fa214.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 145",
+						mp4:"http://redirector.redefine.pl/movies/422ef9e99d0fc91d131612dd7916b628.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						info:""
+					}
+
+				]
+			});
+		});
+	</script>
+</head>
+
+<body bgcolor="000000">
+	<!--example: fit to parent container-->
+	<!-- <div id="parent" style="position:absolute;width:100%;height:100%;top:0px;left:0px;background:#333333">
+	  <div id="Elite_video_player"></div> 
+	</div> -->
+
+	<!--example: fixed width, fixed height-->
+	<div id="Elite_video_player"></div>
+</body>
+
+</html>

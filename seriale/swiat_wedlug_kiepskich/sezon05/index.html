@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="description" content="Elite Video Player"/>
+	<meta property="og:title" content="Elite Video Player by _zac_"/>
+	<meta property="og:image" content="http://creativeinteractivemedia.com/player/imgFB/elite.png"/>
+	<link rel="stylesheet" href="../css/elite.css" type="text/css" media="screen"/>
+	<link rel="stylesheet" href="../css/elite-font-awesome.css" type="text/css">
+	<link rel="stylesheet" href="../css/jquery.mCustomScrollbar.css" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="../js/froogaloop.js" type="text/javascript"></script>
+	<script src="../js/jquery.mCustomScrollbar.js" type="text/javascript"></script> 
+	<script src="../js/THREEx.FullScreen.js"></script>
+	<script src="../js/videoPlayer.js" type="text/javascript"></script>
+	<script src="../js/Playlist.js" type="text/javascript"></script>
+	<script type="text/javascript" src="../js/ZeroClipboard.js"></script>
+
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function($)
+		{
+			videoPlayer = $("#Elite_video_player").Video({   //ALL PLUGIN OPTIONS
+				instanceName:"player1",                      //name of the player instance
+				autohideControls:5,                          //autohide HTML5 player controls
+				hideControlsOnMouseOut:"Yes",                 //hide HTML5 player controls on mouse out of the player: "Yes","No"
+				videoPlayerWidth:1080,                       //fixed total player width
+				videoPlayerHeight:720,                       //fixed total player height
+				responsive:true,				             //this option will overwrite above videoPlayerWidth/videoPlayerHeight and set player to fit your div (parent) container: true/false
+				playlist:"Right playlist",                   //choose playlist type: "Right playlist", "Off"
+				playlistScrollType:"light",                  //choose scrollbar type: "light","minimal","light-2","light-3","light-thick","light-thin","inset","inset-2","inset-3","rounded","rounded-dots","3d"
+				playlistBehaviourOnPageload:"opened",		 //choose playlist behaviour when webpage loads: "closed", "opened" (not apply to Vimeo player)
+				autoplay:false,                              //autoplay when webpage loads: true/false
+				colorAccent:"#cc181e",                       //plugin colors accent (hexadecimal or RGB value - http://www.colorpicker.com/)
+				vimeoColor:"00adef",                         //set "hexadecimal value", default vimeo color is "00adef"
+				youtubeControls:"custom controls",			 //choose youtube player controls: "custom controls", "default controls"
+				youtubeSkin:"dark",                          //default youtube controls theme: light, dark
+				youtubeColor:"red",                          //default youtube controls bar color: red, white
+				youtubeQuality:"default",                    //choose youtube quality: "small", "medium", "large", "hd720", "hd1080", "highres", "default"
+				youtubeShowRelatedVideos:"Yes",				 //choose to show youtube related videos when video finish: "Yes", "No" (onFinish:"Stop video" needs to be enabled)
+				videoPlayerShadow:"effect1",                 //choose player shadow:  "effect1" , "effect2", "effect3", "effect4", "effect5", "effect6", "off"
+				loadRandomVideoOnStart:"No",                 //choose to load random video when webpage loads: "Yes", "No"
+				shuffle:"No",				                 //choose to shuffle videos when playing one after another: "Yes", "No" (shuffle button enabled/disabled on start)
+				posterImg:"",//player poster image  
+				onFinish:"Play next video",                  //"Play next video","Restart video", "Stop video",
+				nowPlayingText:"Yes",                        //enable disable now playing title: "Yes","No"
+				fullscreen:"Fullscreen native",              //choose fullscreen type: "Fullscreen native","Fullscreen browser"
+				rightClickMenu:true,                         //enable/disable right click over HTML5 player: true/false
+				hideVideoSource:false,						 //option to hide self hosted video sources (to prevent users from download/steal your videos): true/false
+				showAllControls:true,						 //enable/disable all HTML5 player controls: true/false
+				allowSkipAd:false,                            //enable/disable "Skip advertisement" option: true/false
+				infoShow:"No",                              //enable/disable info option: "Yes","No"
+				shareShow:"No",                             //enable/disable all share options: "Yes","No"
+				facebookShow:"No",                          //enable/disable facebook option individually: "Yes","No"
+				twitterShow:"No",                           //enable/disable twitter option individually: "Yes","No"
+				mailShow:"No",                              //enable/disable mail option individually: "Yes","No"
+				facebookShareName:"Elite video player",      //first parametar of facebook share in facebook feed dialog is title
+				facebookShareLink:"http://codecanyon.net/item/elite-video-player-wordpress-plugin/10496434",  //second parametar of facebook share in facebook feed dialog is link below title
+				facebookShareDescription:"Elite Video Player is stunning, modern, responsive, fully customisable high-end video player for WordPress that support advertising and the most popular video platforms like YouTube, Vimeo or self-hosting videos (mp4).", //third parametar of facebook share in facebook feed dialog is description below link
+				facebookSharePicture:"https://0.s3.envato.com/files/123866118/preview.jpg", //fourth parametar in facebook feed dialog is picture on left side
+				twitterText:"Elite video player",			 //first parametar of twitter share in twitter feed dialog is text
+				twitterLink:"http://codecanyon.net/item/elite-video-player-wordpress-plugin/10496434", //second parametar of twitter share in twitter feed dialog is link
+				twitterHashtags:"wordpressvideoplayer",		 //third parametar of twitter share in twitter feed dialog is hashtag
+				twitterVia:"Creative media",				 //fourth parametar of twitter share in twitter feed dialog is via (@)
+				googlePlus:"http://codecanyon.net/item/elite-video-player-wordpress-plugin/10496434", //share link over Google +
+				logoShow:"No",                              //"Yes","No"
+				logoClickable:"No",                         //"Yes","No"
+				logoPath:"images/logo/logo.png",             //path to logo image
+				logoGoToLink:"http://codecanyon.net/",       //redirect to page when logo clicked
+				logoPosition:"bottom-left",                  //choose logo position: "bottom-right","bottom-left"
+				embedShow:"No",                             //enable/disable embed option: "Yes","No"
+				embedCodeSrc:"www.yourwebsite.com/videoplayer/index.html", //path to your video player on server
+				embedCodeW:"746",                            //embed player code width
+				embedCodeH:"420",                            //embed player code height
+				embedShareLink:"www.yourwebsite.com/videoplayer/index.html", //direct link to your site (or any other URL) you want to be "shared"
+				youtubePlaylistID:"",                        //automatic youtube playlist ID (leave blank "" if you want to use manual playlist) LL4qbSRobYCjvwo4FCQFrJ4g
+				youtubeChannelID:"",                         //automatic youtube channel ID (leave blank "" if you want to use manual playlist) UCHqaLr9a9M7g9QN6xem9HcQ
+				
+				//manual playlist
+				videos:[
+					
+					
+					{
+						videoType:"HTML5",
+						title:"Odcinek 203",
+						mp4:"http://redirector.redefine.pl/movies/da8b7077e42fe6acc1c6b91271de23e2.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 204",
+						mp4:"http://redirector.redefine.pl/movies/736222f0b5be3e21ddc7607de150626f.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 205",
+						mp4:"http://redirector.redefine.pl/movies/22acabde4873346e9650fd40fda24b82.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 206",
+						mp4:"http://redirector.redefine.pl/movies/105c8ec0cd692f9cda83f743afda1bf2.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 207",
+						mp4:"http://redirector.redefine.pl/movies/144f382cee287321cb61f6c9dd6593f4.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 208",
+						mp4:"http://redirector.redefine.pl/movies/0756303d83a0446cfcddbca4862978ad.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 209",
+						mp4:"http://redirector.redefine.pl/movies/f11bc0dd341e07d1c71f970befd4478a.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 210",
+						mp4:"http://redirector.redefine.pl/movies/c3a57ce6a1bc8d3841469deb68007bcd.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 211",
+						mp4:"http://redirector.redefine.pl/movies/27651692624a49c125b687bd50b9dfbd.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 212",
+						mp4:"http://redirector.redefine.pl/movies/50ce66a7db69c5dffb4bdc211b6d239a.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 213",
+						mp4:"http://redirector.redefine.pl/movies/62e976e93a995773d281b4f0a86b3ed0.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 214",
+						mp4:"http://redirector.redefine.pl/movies/b4047e3b44f0ee75b7a60023c402587f.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 215",
+						mp4:"http://redirector.redefine.pl/movies/77f2f97a159e3484fe5bfd4390030e02.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 216",
+						mp4:"http://redirector.redefine.pl/movies/168f91c094da8077af3ef81001db4b7c.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 217",
+						mp4:"http://redirector.redefine.pl/movies/b6c7b70b5f79633bedf8e7125ddba778.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 218",
+						mp4:"http://redirector.redefine.pl/movies/075fd0d8aa11fcbb83d7d8d0f515d1f4.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 219",
+						mp4:"http://redirector.redefine.pl/movies/a2065573e2f80f94e5df55cb555ca733.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 220",
+						mp4:"http://redirector.redefine.pl/movies/63c8f2c0f467515123830f44a1206cd9.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 221",
+						mp4:"http://redirector.redefine.pl/movies/6c73aa860388359ac5af6707623430eb.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 222",
+						mp4:"http://redirector.redefine.pl/movies/5f887017f1f927bd9b47a0998258e218.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 223",
+						mp4:"http://redirector.redefine.pl/movies/8a90630f6bd2dc4d5f71ac2bbd671048.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 224",
+						mp4:"http://redirector.redefine.pl/movies/79298548482505e39d8eb9e9f0dc9d4f.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 225",
+						mp4:"http://redirector.redefine.pl/movies/196e6fc46a999db198c671181cacc5fe.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 226",
+						mp4:"http://redirector.redefine.pl/movies/2bb227611f9e4ee10e55ead4c63fffdb.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 227",
+						mp4:"http://redirector.redefine.pl/movies/d9bc4737fc505f4af6acca7e1589fdc1.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 228",
+						mp4:"http://redirector.redefine.pl/movies/6315d3e7d8743a147712cba7c2f40aaa.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 229",
+						mp4:"http://redirector.redefine.pl/movies/20d8ebb43be02e6d91bf9751105cbc8a.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 230",
+						mp4:"http://redirector.redefine.pl/movies/88da7bb9e59d1d7e1bc792cf359e6cd9.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 231",
+						mp4:"http://redirector.redefine.pl/movies/e70c2c9b548b40b668dfda4803bc3679.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 232",
+						mp4:"http://redirector.redefine.pl/movies/0a7250af63856d9586eb686ddb1041b9.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 233",
+						mp4:"http://redirector.redefine.pl/movies/6838e62a3f7edb2c5e7ae4e81f4a33c5.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 234",
+						mp4:"http://redirector.redefine.pl/movies/2686c6e3290db24435394d98386d95fc.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 235",
+						mp4:"http://redirector.redefine.pl/movies/3bdd2fa187da2a7f6e21ed3f2cd68812.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 236",
+						mp4:"http://redirector.redefine.pl/movies/44f9aa036c57951c0591d90f3544f1a6.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 237",
+						mp4:"http://redirector.redefine.pl/movies/d6a317f94a5e4f283389df0fbce652e8.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 238",
+						mp4:"http://redirector.redefine.pl/movies/a8eb1106c734a8b7b533b92b456b1585.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 239",
+						mp4:"http://redirector.redefine.pl/movies/6ba124f6db90555c76aeb22097c986ed.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 240",
+						mp4:"http://redirector.redefine.pl/movies/24d8110227252679682ea63e37a47809.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 241",
+						mp4:"http://redirector.redefine.pl/movies/cb5713d49caa9d2d35465471e8c4cf11.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 242",
+						mp4:"http://redirector.redefine.pl/movies/ae1b7d6d46143717348d90f235e2074e.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 243",
+						mp4:"http://redirector.redefine.pl/movies/8d3d1c5ff0a57cc504f7638db272b626.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					},
+					{
+						videoType:"HTML5",
+						title:"Odcinek 244",
+						mp4:"http://redirector.redefine.pl/movies/01d7384db424974e751466cadf7dcecc.mp4",
+						imageUrl:"http://s.redefine.pl/dcs/o2/redefine/cp/8w/8wqzwogxxo84u2ag1drjp713biqoq394.jpg",
+						imageTimer:4,
+						thumbImg:"http://s3.party.pl/seriale/swiat-wedlug-kiepskich-ma-18-lat-ciekawostki-o-serialu-417246-article.jpg",
+						info:""
+					}
+
+				]
+			});
+		});
+	</script>
+</head>
+
+<body bgcolor="000000">
+	<!--example: fit to parent container-->
+	<!-- <div id="parent" style="position:absolute;width:100%;height:100%;top:0px;left:0px;background:#333333">
+	  <div id="Elite_video_player"></div> 
+	</div> -->
+
+	<!--example: fixed width, fixed height-->
+	<div id="Elite_video_player"></div>
+</body>
+
+</html>
